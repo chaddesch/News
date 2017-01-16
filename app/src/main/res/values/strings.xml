@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">News, Yo</string>
+
+    <!-- Text to display in the list when there are no articles [CHAR LIMIT=NONE] -->
+    <string name="no_articles">No articles found.</string>
+
+    <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
+    <string name="no_internet_connection">No internet connection.</string>
+
+    <!-- Settings Menu Item [CHAR LIMIT=NONE] -->
+    <string name="settings_menu_item">Settings</string>
+    <!-- Settings Activity Title [CHAR LIMIT=NONE] -->
+    <string name="settings_title">Article Settings</string>
+
+    <!-- Strings For Minimum Magnitude Preference [CHAR LIMIT=30] -->
+    <string name="settings_search_terms_label">Enter search terms</string>
+    <string name="settings_search_terms_key" translatable="false">search_terms</string>
+    <string name="settings_search_terms_default" translatable="false">Android Development</string>
+
+</resources>
