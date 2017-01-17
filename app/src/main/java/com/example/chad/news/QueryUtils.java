@@ -26,17 +26,17 @@ public final class QueryUtils {
 
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
-    private QueryUtils(){
+    private QueryUtils() {
     }
 
-    public static List<Article> fetchArticleData(String requestURL){
+    public static List<Article> fetchArticleData(String requestURL) {
 
         URL url = createUrl(requestURL);
 
         String jsonResponse = null;
         try {
             jsonResponse = makeHttpRequest(url);
-        } catch (IOException e){
+        } catch (IOException e) {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
@@ -110,9 +110,9 @@ public final class QueryUtils {
         return output.toString();
     }
 
-    private static List<Article> extractFeatureFromJson(String articleJson){
+    private static List<Article> extractFeatureFromJson(String articleJson) {
 
-        if (TextUtils.isEmpty(articleJson)){
+        if (TextUtils.isEmpty(articleJson)) {
             return null;
         }
 
@@ -132,8 +132,10 @@ public final class QueryUtils {
                 String webPubDate = currentArticle.getString("webPublicationDate");
                 String webUrl = currentArticle.getString("webUrl");
 
-                }
-            } catch (JSONException e) {
+                articles.add(new Article(webTitle, sectionName, webPubDate, webUrl));
+
+            }
+        } catch (JSONException e) {
             Log.e("QueryUtils", "Problem parsing the news JSON results", e);
         }
         return articles;

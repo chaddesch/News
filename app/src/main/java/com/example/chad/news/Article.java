@@ -15,9 +15,9 @@ public class Article {
 
     private String mWebPubDate;
 
-    private URL mWebUrl;
+    private String mWebUrl;
 
-    public Article(String webTitle, String sectionName, String webPubDate, URL webUrl){
+    public Article(String webTitle, String sectionName, String webPubDate, String webUrl){
         mWebTitle = webTitle;
         mSectionName = sectionName;
         mWebPubDate = webPubDate;
@@ -36,7 +36,7 @@ public class Article {
         return mWebPubDate;
     }
 
-    public URL getWebUrl(){
+    public String getWebUrl(){
         return mWebUrl;
     }
 }

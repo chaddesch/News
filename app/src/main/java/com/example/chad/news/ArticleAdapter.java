@@ -18,6 +18,14 @@ import static android.R.id.list;
 
 public class ArticleAdapter extends ArrayAdapter<Article> {
 
+    private String LOG_TAG = "ArticleAdapter";
+
+    static class ViewHolder {
+        public TextView webTitleView;
+        public TextView sectionNameView;
+        public TextView pubDateView;
+    }
+
     public ArticleAdapter(Context context, List<Article> articles){
         super(context, 0, articles);
     }
@@ -25,30 +33,22 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         View listItemView = convertView;
-        if (listItemView == null){
+        if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.article_list_item, parent, false);
+
+            ViewHolder viewHolder = new ViewHolder();
+            viewHolder.webTitleView = (TextView) listItemView.findViewById(R.id.web_title);
+            viewHolder.sectionNameView = (TextView) listItemView.findViewById(R.id.section_name);
+            viewHolder.pubDateView = (TextView) listItemView.findViewById(R.id.pub_date);
+            listItemView.setTag(viewHolder);
         }
+        ViewHolder holder = (ViewHolder) listItemView.getTag();
+        Article article = getItem(position);
 
-        Article currentArticle = getItem(position);
-
-        String webTitle = currentArticle.getWebTitle();
-
-        TextView webTitleView = (TextView) listItemView.findViewById(R.id.web_title);
-
-        webTitleView.setText(webTitle);
-
-        String sectionName = currentArticle.getSectionName();
-
-        TextView sectionNameView = (TextView) listItemView.findViewById(R.id.section_name);
-
-        sectionNameView.setText(sectionName);
-
-        String pubDate = currentArticle.getWebPubDate();
-
-        TextView pubDateView = (TextView) listItemView.findViewById(R.id.pub_date);
-
-        pubDateView.setText(pubDate);
+        holder.webTitleView.setText(article.getWebTitle());
+        holder.sectionNameView.setText(article.getSectionName());
+        holder.pubDateView.setText(article.getWebPubDate());
 
         return listItemView;
     }
